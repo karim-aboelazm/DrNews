@@ -43,8 +43,9 @@
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#checkNews">Check News</a></li>
+          <li><a class="nav-link scrollto active" href="/">Home</a></li>
+          <li><a class="nav-link scrollto" href="/text_check">Check News By Text</a></li>
+          <li><a class="nav-link scrollto" href="/image_check">Check News By Image</a></li>
           <li><a class="nav-link scrollto" href="#about">About</a></li>
           <li><a class="nav-link scrollto" href="#services">Services</a></li>
           <li><a class="nav-link scrollto" href="#team">Team</a></li>
@@ -62,8 +63,8 @@
       <!-- Slide 1 -->
       <div class="carousel-item active">
         <div class="carousel-container">
-          <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Selecao</span></h2>
-          <p class="animate__animated fanimate__adeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+          <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Dr News</span></h2>
+          <p class="animate__animated fanimate__adeInUp" style="text-align:center;line-height: 40px; font-size:20px;" >Countering misinformation can reduce belief in the moment, but corrective messages quickly fade from memory. We tested whether the longer-term impact of fact-checks depends on when people receive them.</p>
           <a href="#checkNews" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
         </div>
       </div>
@@ -71,8 +72,8 @@
       <!-- Slide 2 -->
       <div class="carousel-item">
         <div class="carousel-container">
-          <h2 class="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>
-          <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+          <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Dr News</span></h2>
+          <p class="animate__animated fanimate__adeInUp" style="text-align:center;line-height: 40px; font-size:20px;" >Countering misinformation can reduce belief in the moment, but corrective messages quickly fade from memory. We tested whether the longer-term impact of fact-checks depends on when people receive them.</p>
           <a href="#checkNews" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
         </div>
       </div>
@@ -80,9 +81,9 @@
       <!-- Slide 3 -->
       <div class="carousel-item">
         <div class="carousel-container">
-          <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
-          <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-          <a href="#checkNews" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>
+          <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Dr News</span></h2>
+          <p class="animate__animated fanimate__adeInUp" style="text-align:center;line-height: 40px; font-size:20px;" >Countering misinformation can reduce belief in the moment, but corrective messages quickly fade from memory. We tested whether the longer-term impact of fact-checks depends on when people receive them.</p>
+          <a href="#checkNews" class="btn-get-started animate__animated animate__fadeInUp scrollto">Get Started</a>        
         </div>
       </div>
 
@@ -117,81 +118,10 @@
     
 <main id="main">
 
-    <section id="checkNews" class="about check_news">
-      <div class="container">
-        <div class="section-title" data-aos="zoom-out">
-          <h2>News</h2>
-          <p>Checking Your News</p>
-        </div>
-        <div class="row" id="colorlib-footer">
-					<div class="display-tc">
-						<form class="form-inline qbstp-header-subscribe" method="POST" action="">
-							{{ form.hidden_tag() }}
-							<div class="col-three-forth text-center col-md-offset-2">
-								<div class="form-group">
-                    {% if form.original_text.errors %}
-                        {{ form.original_text(class="form-control form-control-lg is-invalid") }}
-                        <div class="invalid-feedback">
-                            {% for error in form.original_text.errors %}
-                                <span>{{ error }}</span>
-                            {% endfor %}
-                        </div>
-                    {% else %}
-                        {{ form.original_text(class="form-control", rows="10") }}
-                    {% endif %}
-	              </div>
-              </div>
-              <div class="col-three-forth text-center col-md-offset-2">
-	            <div class="form-group">
-                  <br>
-                  {{ form.generate(class="btn btn-primary btn-outline btn-md") }}
-                  {{ form.predict(class="btn btn-primary btn-outline btn-md") }}
-	            </div>
-	          </div>
-					</form>
-				</div>
-			</div>
-
-				<div class="row" id="colorlib-footer">
-					<div class="col-three-forth text-center">
-						<br>
-						{% if output  %}
-							<div class="form-group">
-                {% if output['prediction'] == "REAL" %}
-                <p>
-									<h2 class="mx-auto">The News Prediction is <strong style="color: green;">{{output['prediction']}}</strong> in Accuracy 99%</h2>
-								</p>
-                {% else %}
-								<p>
-									<h2 class="mx-auto">The News Prediction is <strong style="color: red;">{{output['prediction']}}</strong> in Accuracy 99%</h2>
-								</p>
-                {% endif %}	
-							</div>
-						{% endif %}
-					</div>
-				</div>
-
-        <style>
-          #generate,#predict{
-            background-color: transparent;
-            width: 250px;
-            height: 70px;
-            line-height: 50px;
-            color:black;
-            border-radius: 25px;
-            border : 2px solid darkorange;
-            font-size: 22px;
-          }
-          #predict:hover,#generate:hover{
-            background-color:darkorange;
-            color: white;
-            transition: 0.5s all;
-          }
-        </style>
-     
-    </div>
-    </section>
-
+    {% block forms_checking %}
+      
+    {% endblock forms_checking %}
+    
     <!-- ======= About Section ======= -->
     <section id="about" class="about">
       <div class="container">
@@ -204,20 +134,17 @@
         <div class="row content" data-aos="fade-up">
           <div class="col-lg-6">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              Do you trust all the news you hear from social media?
+              All news are not real, right?
+              How will you detect fake news?
+              The answer is Python. By practicing this advanced python project of detecting fake news, you will easily make a difference between real and fake news.
+              Before moving ahead in this machine learning project, get aware of the terms related to it like fake news, tfidfvectorizer, PassiveAggressive Classifier.
+              Also, I like to add that DataFlair has published a series of machine learning Projects where you will get interesting and open-source advanced ml projects. 
             </p>
-            <ul>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-              <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit</li>
-              <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat</li>
-            </ul>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum.
+              A growing number of people use the internet to stay informed and share millions of posts, articles, and videos across platforms such as Facebook, Twitter, and YouTube. The rapid adoption of social media has led to a rise in information-sharing among users, with fake news becoming a component of our digital daily routines. The spread of misinformation is in part attributed to social media failing to verify the authenticity of a news item. This makes it easy to share seemingly real images and videos which have been skillfully manipulated. It is now well-known that misinformation has a significant influence on public opinion and discourse.
             </p>
             <a href="#" class="btn-learn-more">Learn More</a>
           </div>
@@ -234,25 +161,25 @@
           <li class="nav-item col-3" data-aos="zoom-in">
             <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">
               <i class="ri-gps-line"></i>
-              <h4 class="d-none d-lg-block">Modi sit est dela pireda nest</h4>
+              <h4 class="d-none d-lg-block">What is False Information?</h4>
             </a>
           </li>
           <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="100">
             <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
               <i class="ri-body-scan-line"></i>
-              <h4 class="d-none d-lg-block">Unde praesenti mara setra le</h4>
+              <h4 class="d-none d-lg-block">What types of fake news exist?</h4>
             </a>
           </li>
           <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="200">
             <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
               <i class="ri-sun-line"></i>
-              <h4 class="d-none d-lg-block">Pariatur explica nitro dela</h4>
+              <h4 class="d-none d-lg-block">How to detect fake news?</h4>
             </a>
           </li>
           <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="300">
             <a class="nav-link" data-bs-toggle="tab" href="#tab-4">
               <i class="ri-store-line"></i>
-              <h4 class="d-none d-lg-block">Nostrum qui dile node</h4>
+              <h4 class="d-none d-lg-block">Examples of fake news</h4>
             </a>
           </li>
         </ul>
@@ -261,20 +188,11 @@
           <div class="tab-pane active show" id="tab-1">
             <div class="row">
               <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
-                </p>
-                <ul>
-                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                </ul>
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
+                <h3>What is False Information?</h3>
+                <p style="text-align: justify;">
+                  Fake news is an inaccurate, sometimes sensationalistic report that is created to gain attention, mislead, deceive or damage a reputation. Unlike misinformation, which is inaccurate because a reporter has confused facts, fake news is created with the intent to manipulate someone or something. Fake news can spread quickly when it provides disinformation that is aligned with the audience's point of view because such content is not likely to be questioned or discounted.
+                  In recent years, the internet has provided a low-cost distribution channel for fake news. Posting fake news in discussion forums, website comment fields, blogs and social media websites requires little, if any, technical know-how. Social media websites in particular have proved to be an easy venue for distributing fake news. Bogus stories can be tweeted or posted from a mobile smartphone and quickly distributed to a large audience through retweets and sharing.
+                  Although some creators and distributors of fake news have political or social agendas, others are more entrepreneurial, using fake news that appeals to recipients on an emotional level to make money from digital advertising placed around the content. When fake news is used to spread propaganda, it can be dangerous. In addition to shaping public opinion and behavior, it can also cause mistrust, encourage dissent and deflect attention from real news.
                 </p>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
@@ -285,22 +203,11 @@
           <div class="tab-pane" id="tab-2">
             <div class="row">
               <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                <h3>Neque exercitationem debitis soluta quos debitis quo mollitia officia est</h3>
+                <h3>What types of fake news exist?</h3>
                 <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
+                  Fake news is mostly used to manipulate public opinion for political or commercial gain. But false reports are also regularly used as part of sensational headlines in the form of clickbait, which aims to attract people to click through to linked websites and generate advertising income. Phishing attempsalso use simulated information and abuse the trust of internet users. Seemingly authentic contact forms are used to collect personal user data for the purpose of identity theft. Other common phenomena are email hoaxes in the form of chain mail which threaten recipients with issues in case they fail to share an email.
                 </p>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
-                </p>
-                <ul>
-                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                  <li><i class="ri-check-double-line"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
-                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-                </ul>
+                
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
                 <img src="static/img/features-2.png" alt="" class="img-fluid">
@@ -310,21 +217,11 @@
           <div class="tab-pane" id="tab-3">
             <div class="row">
               <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                <h3>Voluptatibus commodi ut accusamus ea repudiandae ut autem dolor ut assumenda</h3>
+                <h3>How to detect fake news?</h3>
                 <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
+                  Although lots of fake news appears believable at first, it’s also easy to debunk. If you follow a few of the methods described below regularly, it should become easy to distinguish real from fake news.
                 </p>
-                <ul>
-                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                  <li><i class="ri-check-double-line"></i> Provident mollitia neque rerum asperiores dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
-                </ul>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
-                </p>
+                
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
                 <img src="static/img/features-3.png" alt="" class="img-fluid">
@@ -334,20 +231,14 @@
           <div class="tab-pane" id="tab-4">
             <div class="row">
               <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                <h3>Omnis fugiat ea explicabo sunt dolorum asperiores sequi inventore rerum</h3>
+                <h3>Examples of fake news</h3>
                 <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
-                </p>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                  magna aliqua.
+                  While some pieces of fake news are relatively harmless, others can cause significant damage because they foster anti-democratic thinking. Experts anticipate that fake news in combination with social bots have had a major influence on world events including the United Kingdom’s Brexit vote in 2016 and the United States presidential election in 2017. Here are three examples of “successful” fake news which influenced public opinion globally:
                 </p>
                 <ul>
-                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                  <li><i class="ri-check-double-line"></i> AIDS conspiracy: Even before the digitalization of information, blind media trust was used to spread wrongful information. On behalf of secret services by the GDR and Soviet Union, West German media in the 1980s spread the news that the AIDS virus had been created by US secret service CIA. This is called a disinformation campaign.</li>
+                  <li><i class="ri-check-double-line"></i> The Bitcoin scam: As cryptocurrencies gained popularity in recent years, the number of scams and fraudulent practices have increased. Alleged bitcoin trading platforms advertised their services using fictitious reviews by famous people to grow public trust.The reviews suggested high gains to potential investors.</li>
+                  <li><i class="ri-check-double-line"></i> Fake news on immigration crisis: During the immigration crisis, many items of fake news were being spread to polarize the European public. In February 2017, for example, British newspaper “Daily Express” published an article claiming that Germany hoped to bring in 12 million migrants. This was later revealed untrue by the German investigative newsroom.</li>
                 </ul>
               </div>
               <div class="col-lg-6 order-1 order-lg-2 text-center">
@@ -366,77 +257,18 @@
 
         <div class="row" data-aos="zoom-out">
           <div class="col-lg-9 text-center text-lg-start">
-            <h3>Call To Action</h3>
-            <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <h3>Check Your News</h3>
+            <p>Fake news “is fabricated information that mimics news media content in form but…lack(s) the news media’s editorial norms and processes for ensuring the accuracy and credibility of information” [2]. It overlaps with misinformation (false or misleading information) and disinformation (false information purposely spread to mislead people).</p>
           </div>
           <div class="col-lg-3 cta-btn-container text-center">
-            <a class="cta-btn align-middle" href="#">Call To Action</a>
+            <a class="cta-btn align-middle" href="#checkNews">Check Now</a>
           </div>
         </div>
 
       </div>
     </section><!-- End Cta Section -->
 
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
-      <div class="container">
-
-        <div class="section-title" data-aos="zoom-out">
-          <h2>Services</h2>
-          <p>What we do offer</p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4 col-md-6">
-            <div class="icon-box" data-aos="zoom-in-left">
-              <div class="icon"><i class="bi bi-briefcase" style="color: #ff689b;"></i></div>
-              <h4 class="title"><a href="">Lorem Ipsum</a></h4>
-              <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident</p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mt-5 mt-md-0">
-            <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="100">
-              <div class="icon"><i class="bi bi-book" style="color: #e9bf06;"></i></div>
-              <h4 class="title"><a href="">Dolor Sitema</a></h4>
-              <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat tarad limino ata</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mt-5 mt-lg-0 ">
-            <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="200">
-              <div class="icon"><i class="bi bi-card-checklist" style="color: #3fcdc7;"></i></div>
-              <h4 class="title"><a href="">Sed ut perspiciatis</a></h4>
-              <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur</p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mt-5">
-            <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="300">
-              <div class="icon"><i class="bi bi-binoculars" style="color:#41cf2e;"></i></div>
-              <h4 class="title"><a href="">Magni Dolores</a></h4>
-              <p class="description">Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
-            </div>
-          </div>
-
-          <div class="col-lg-4 col-md-6 mt-5">
-            <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="400">
-              <div class="icon"><i class="bi bi-globe" style="color: #d6ff22;"></i></div>
-              <h4 class="title"><a href="">Nemo Enim</a></h4>
-              <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque</p>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mt-5">
-            <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="500">
-              <div class="icon"><i class="bi bi-clock" style="color: #4680ff;"></i></div>
-              <h4 class="title"><a href="">Eiusmod Tempor</a></h4>
-              <p class="description">Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi</p>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Services Section -->
-
-
+  
     <!-- ======= Testimonials Section ======= -->
     <section id="testimonials" class="testimonials">
       <div class="container">

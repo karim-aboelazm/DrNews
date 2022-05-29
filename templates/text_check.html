@@ -1,0 +1,77 @@
+{% extends 'index.html' %}
+{% block forms_checking %}
+<section id="checkNewsByText" class="about check_news">
+    <div class="container">
+      <div class="section-title" data-aos="zoom-out">
+        <h2>News</h2>
+        <p>Checking Your News</p>
+      </div>
+      <div class="row" id="colorlib-footer">
+                  <div class="display-tc">
+                      <form class="form-inline qbstp-header-subscribe" method="POST" action="">
+                          {{ form.hidden_tag() }}
+                          <div class="col-three-forth text-center col-md-offset-2">
+                              <div class="form-group">
+                  {% if form.original_text.errors %}
+                      {{ form.original_text(class="form-control form-control-lg is-invalid") }}
+                      <div class="invalid-feedback">
+                          {% for error in form.original_text.errors %}
+                              <span>{{ error }}</span>
+                          {% endfor %}
+                      </div>
+                  {% else %}
+                      {{ form.original_text(class="form-control", rows="10") }}
+                  {% endif %}
+                </div>
+            </div>
+            <div class="col-three-forth text-center col-md-offset-2">
+              <div class="form-group">
+                <br>
+                {{ form.generate(class="btn btn-primary btn-outline btn-md") }}
+                {{ form.predict(class="btn btn-primary btn-outline btn-md") }}
+              </div>
+            </div>
+                  </form>
+              </div>
+          </div>
+
+          <div class="row" id="colorlib-footer">
+            <div class="col-three-forth text-center">
+              <br>
+              {% if output  %}
+                <div class="form-group">
+                  {% if output['prediction'] == "REAL" %}
+                  <p>
+                    <h2 class="mx-auto">The News Prediction is <strong class="btn btn-success btn-lg">{{output['prediction']}}</strong> in Accuracy 99%</h2>
+                  </p>
+                  {% else %}
+                  <p>
+                    <h2 class="mx-auto">The News Prediction is <strong class="btn btn-danger btn-lg">{{output['prediction']}}</strong> in Accuracy 99%</h2>
+                  </p>
+                  {% endif %}	
+                </div>
+              {% endif %}
+            </div>
+          </div>
+      <style>
+        #generate,#predict{
+          background-color: transparent;
+          width: 250px;
+          height: 70px;
+          line-height: 50px;
+          color:black;
+          border-radius: 25px;
+          border : 2px solid darkorange;
+          font-size: 22px;
+        }
+        #predict:hover,#generate:hover{
+          background-color:darkorange;
+          color: white;
+          transition: 0.5s all;
+        }
+      </style>
+   
+  </div>
+  </section>
+{% endblock %}
+
