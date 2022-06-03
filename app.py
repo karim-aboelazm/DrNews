@@ -1,22 +1,15 @@
-import re
-from flask import (Flask, 
-                  flash, 
-                  render_template,
-                  request,
-                  redirect,
-                  url_for  
-                    )
+from flask import Flask,render_template,request
 from werkzeug.utils import secure_filename
 from prediction_model import PredictionModel
 import pandas as pd
 from random import randrange
 import os
-from flask_cors import cross_origin
-from gevent.pywsgi import WSGIServer
-from forms import  OriginalTextForm,OriginalImageForm
+from forms import  OriginalTextForm
 from PIL import Image
 import pytesseract
+
 pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+
 UPLOAD_FOLDER = 'screenshots'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
